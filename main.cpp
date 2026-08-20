@@ -1,5 +1,17 @@
 #include <iostream>
 #include <string>
+#include <fstream>
+#include <sstream>
+std::string read_file(const std::string& filepath) {
+    std::ifstream file(filepath);
+    std::stringstream buffer;
+    buffer << file.rdbuf();
+    return buffer.str();
+}
+void write_file(const std::string& filepath, const std::string& content) {
+    std::ofstream file(filepath, std::ios::app);
+    file << content << '\n';
+}
 int main(int argc,char ** argv){
 std::string version = "V0.0.1";
 if (argc > 1){
