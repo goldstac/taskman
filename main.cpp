@@ -7,6 +7,7 @@ if (argc > 1){
     if (arg1 == "add"){
         if (argc < 3){
             std::cout << "usage: taskman add <task>\n";
+            return 1;
         }
         std::string arg2 = argv[2];
         std::cout << arg2;
