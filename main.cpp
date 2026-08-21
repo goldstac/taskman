@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <filesystem>
 std::string read_file(const std::string& filepath) {
     std::ifstream file(filepath);
     std::stringstream buffer;
@@ -21,9 +22,12 @@ if (argc > 1){
             std::cout << "usage: taskman add <task>\n";
             return 1;
         }
-        std::string arg2 = argv[2];
-        write_file("blob/storage/taskman.storage",arg2);
-        std::cout << "Task : " << arg2 << " Added\n";
+        std::string task;
+         for (int i = 2; i < argc;i++){
+             if (i == 2) task += "";
+             task += argv[i];
+         }
+         std::cout << "Task : " << task << "\n";
     }
     else if (arg1 == "--version"){
         std::cout << version << "\n";
