@@ -24,7 +24,7 @@ if (argc > 1){
         }
         std::string task;
          for (int i = 2; i < argc;i++){
-             if (i == 2) task += "";
+             if (i == 2) task += " ";
              task += argv[i];
          }
          std::cout << "Task : " << task << "\n";
