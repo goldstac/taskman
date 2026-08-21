@@ -22,7 +22,8 @@ if (argc > 1){
             return 1;
         }
         std::string arg2 = argv[2];
-        std::cout << arg2;
+        write_file("blob/storage/taskman.storage",arg2);
+        std::cout << "Task : " << arg2 << " Added\n";
     }
     else if (arg1 == "--version"){
         std::cout << version << "\n";
