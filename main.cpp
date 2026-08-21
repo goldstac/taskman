@@ -28,6 +28,10 @@ if (argc > 1){
     else if (arg1 == "--version"){
         std::cout << version << "\n";
     }
+    else if (arg1 == "list"){
+     std::string load_list = read_file("blob/storage/taskman.storage");
+     std::cout << load_list << "\n";
+    }
 }
 else{
     std::cout << "usage: taskman <command>\n";
