@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include <filesystem>
+namespace fs = std::filesystem;
 std::string read_file(const std::string& filepath) {
     std::ifstream file(filepath);
     std::stringstream buffer;
@@ -15,6 +16,10 @@ void write_file(const std::string& filepath, const std::string& content) {
 }
 int main(int argc,char ** argv){
 std::string version = "V0.0.1";
+if (!fs::exists("blob/storage/taskman.storage")){
+   std::cout << "taskman : blob/storage/taskman.storage not found\n";
+   std::ofstream("blob/storage/taskman.storage");
+}
 if (argc > 1){
     std::string arg1 = argv[1];
     if (arg1 == "add"){
