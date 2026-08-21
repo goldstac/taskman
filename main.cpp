@@ -20,6 +20,9 @@ if (!fs::exists("blob/storage/taskman.storage")){
    std::cout << "taskman : blob/storage/taskman.storage not found\n";
    std::ofstream("blob/storage/taskman.storage");
 }
+else {
+    // all good
+}
 if (argc > 1){
     std::string arg1 = argv[1];
     if (arg1 == "add"){
