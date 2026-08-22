@@ -20,7 +20,7 @@ taskman --version
 
 - Add tasks from the command line
 - List all your tasks
-- Tasks are stored in a simple local file (`blob/storage/taskman.storage`)
+- Tasks are stored in a simple local file (`~/.local/share/taskman/taskman.storage`)
 - No dependencies, no config files, no bloat
 
 ## Building
@@ -58,9 +58,7 @@ Running `taskman` without arguments prints usage help.
 
 ## Storage
 
-Tasks live in `blob/storage/taskman.storage`. The file is created automatically on first run if it doesn't exist. It's plain text, so you can read, edit, or back it up however you like.
-
-> **Note:** the storage path is currently relative to the folder you run `taskman` from — running it from a different directory will use a different storage file. This will move to a fixed location (e.g. `~/.local/share/taskman/`) in a future version.
+Tasks live in `~/.local/share/taskman/taskman.storage`. The file is created automatically on first run if it doesn't exist. It's plain text, so you can read, edit, or back it up however you like.
 
 ## Project Structure
 
@@ -68,7 +66,6 @@ Tasks live in `blob/storage/taskman.storage`. The file is created automatically 
 ├── main.cpp                  # the entire program
 ├── quick.sh                  # build script
 ├── install.sh                # curl | bash installer
-├── blob/storage/             # task storage
 └── extra/                    # experimental code
 ```
 

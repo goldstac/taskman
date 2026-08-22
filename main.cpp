@@ -3,7 +3,11 @@
 #include <fstream>
 #include <sstream>
 #include <filesystem>
+#include <cstdlib>
 namespace fs = std::filesystem;
+const char* home_env = std::getenv("HOME");
+const std::string storage_dir = home_env ? std::string(home_env) + "/.local/share/taskman" : "blob/storage";
+const std::string storage_path = storage_dir + "/taskman.storage";
 std::string read_file(const std::string& filepath) {
     std::ifstream file(filepath);
     std::stringstream buffer;
@@ -16,9 +20,10 @@ void write_file(const std::string& filepath, const std::string& content) {
 }
 int main(int argc,char ** argv){
 std::string version = "V0.0.1";
-if (!fs::exists("blob/storage/taskman.storage")){
-   std::cout << "taskman : blob/storage/taskman.storage not found\n";
-   std::ofstream("blob/storage/taskman.storage");
+if (!fs::exists(storage_path)){
+   std::cout << "taskman : " << storage_path << " not found\n";
+   fs::create_directories(storage_dir);
+   std::ofstream(storage_path);
 }
 else {
     // all good
@@ -36,12 +41,13 @@ if (argc > 1){
              task += argv[i];
          }
          std::cout << "Task : " << task << "\n";
+         write_file(storage_path, task);
     }
     else if (arg1 == "--version"){
         std::cout << version << "\n";
     }
     else if (arg1 == "list"){
-     std::string load_list = read_file("blob/storage/taskman.storage");
+     std::string load_list = read_file(storage_path);
      std::cout << load_list << "\n";
     }
 }
