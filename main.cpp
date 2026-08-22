@@ -19,7 +19,7 @@ void write_file(const std::string& filepath, const std::string& content) {
     file << content << '\n';
 }
 int main(int argc,char ** argv){
-std::string version = "V0.0.1";
+std::string version = "V0.0.1 Alpha";
 if (!fs::exists(storage_path)){
    std::cout << "taskman : " << storage_path << " not found\n";
    fs::create_directories(storage_dir);
