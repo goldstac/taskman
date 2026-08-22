@@ -1,1 +1,1 @@
-g++ -o main main.cpp
+g++ -o taskman main.cpp
