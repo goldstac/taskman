@@ -23,7 +23,7 @@ std::string version = "V0.0.1 Alpha";
 if (!fs::exists(storage_path)){
    std::cout << "taskman : " << storage_path << " not found\n";
    fs::create_directories(storage_dir);
-   std::ofstream(storage_path);
+   std::ofstream(storage_path) << "";
 }
 else {
     // all good
