@@ -41,6 +41,7 @@ if (argc > 1){
              task += argv[i];
          }
          std::cout << "Task : " << task << "\n";
+         write_file(storage_path,task);
     }
     else if (arg1 == "--version"){
         std::cout << version << "\n";
