@@ -18,12 +18,15 @@ void write_file(const std::string& filepath, const std::string& content) {
     std::ofstream file(filepath, std::ios::app);
     file << content << '\n';
 }
+void create_file(const std::string& filepath) {
+    std::ofstream file(filepath);
+}
 int main(int argc,char ** argv){
 std::string version = "V0.0.1 Alpha";
 if (!fs::exists(storage_path)){
    std::cout << "taskman : " << storage_path << " not found\n";
    fs::create_directories(storage_dir);
-   std::ofstream(storage_path) << "";
+   create_file(storage_path);
 }
 else {
     // all good
