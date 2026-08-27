@@ -50,6 +50,11 @@ if (argc > 1){
      std::string load_list = read_file(storage_path);
      std::cout << load_list << "\n";
     }
+    else if (arg1 == "list --clear"){
+        std::string cmd_cache_clear = "rm " + storage_path;
+        std::cout << cmd_cache_clear;
+    }
+
 }
 else{
     std::cout << "usage: taskman <command>\n";
