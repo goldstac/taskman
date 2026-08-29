@@ -50,12 +50,21 @@ if (argc > 1){
         std::cout << version << "\n";
     }
     else if (arg1 == "list"){
-     std::string load_list = read_file(storage_path);
-     std::cout << load_list << "\n";
-    }
-    else if (arg1 == "list --clear"){
-        std::string cmd_cache_clear = "rm " + storage_path;
-        std::cout << cmd_cache_clear;
+     if (argc > 2 && std::string(argv[2]) == "--clear"){
+        std::string cache_clear_cmd = "rm " + storage_path;
+        std::cout << storage_path << "\n";
+     }
+     else if (argc > 2){
+         std::cout << "taskman: unknown option " << argv[2] << "\n";
+         std::cout << "usage: taskman list\n";
+         std::cout << "usage: taskman list --clear\n";
+
+     }
+     else{
+         std::string load_list = read_file(storage_path);
+         std::cout << load_list << "\n";
+
+     }
     }
 
 }
