@@ -27,6 +27,7 @@ if (!fs::exists(storage_path)){
    std::cout << "taskman : " << storage_path << " not found\n";
    fs::create_directories(storage_dir);
    create_file(storage_path);
+   std::cout << "taskman : Created " << storage_path << "\n";
 }
 else {
     // all good
@@ -52,7 +53,8 @@ if (argc > 1){
     else if (arg1 == "list"){
      if (argc > 2 && std::string(argv[2]) == "--clear"){
         std::string cache_clear_cmd = "rm " + storage_path;
-        std::cout << storage_path << "\n";
+        std::system(cache_clear_cmd.c_str());
+        std::cout << "Nuked --> " << storage_path << "\n";
      }
      else if (argc > 2){
          std::cout << "taskman: unknown option " << argv[2] << "\n";
