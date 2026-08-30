@@ -69,13 +69,7 @@ if (argc > 1){
      }
     }
     else if (arg1 == "--help"){
-        std::cout << "Taskman Help\n";
-        std::cout << "usage : taskman add <task>\n";
-        std::cout << "doc: adds a new task\n";
-        std::cout << "usage : taskman list\n";
-        std::cout << "doc: list tasks\n";
-        std::cout << "usage : taskman list --clear\n";
-        std::cout << "doc : removes list storage\n";
+
     }
 
 }
