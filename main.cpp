@@ -18,12 +18,17 @@ void write_file(const std::string& filepath, const std::string& content) {
     std::ofstream file(filepath, std::ios::app);
     file << content << '\n';
 }
+void create_file(const std::string& filepath) {
+    std::ofstream file(filepath);
+}
 int main(int argc,char ** argv){
-std::string version = "V0.0.1 Alpha";
+std::string version = "V0.0.1";
+std::string status = "Alpha";
 if (!fs::exists(storage_path)){
    std::cout << "taskman : " << storage_path << " not found\n";
    fs::create_directories(storage_dir);
-   std::ofstream(storage_path);
+   create_file(storage_path);
+   std::cout << "taskman : Created " << storage_path << "\n";
 }
 else {
     // all good
@@ -47,9 +52,44 @@ if (argc > 1){
         std::cout << version << "\n";
     }
     else if (arg1 == "list"){
-     std::string load_list = read_file(storage_path);
-     std::cout << load_list << "\n";
+     if (argc > 2 && std::string(argv[2]) == "--clear"){
+        std::string cache_clear_cmd = "rm " + storage_path;
+        std::system(cache_clear_cmd.c_str());
+        std::cout << "Nuked --> " << storage_path << "\n";
+     }
+     else if (argc > 2){
+         std::cout << "taskman: unknown option " << argv[2] << "\n";
+         std::cout << "usage: taskman list\n";
+         std::cout << "usage: taskman list --clear\n";
+
+     }
+     else{
+         std::string load_list = read_file(storage_path);
+         std::cout << load_list << "\n";
+
+     }
     }
+    else if (arg1 == "list --path"){
+        std::cout << storage_path << "\n";
+    }
+    else if (arg1 == "--help"){
+        std::cout << "taskman " << version << " " << status << "\n";
+        std::cout << "\n";
+        std::cout << "A minimal command-line task manager.\n";
+        std::cout << "\n";
+        std::cout << "Usage: taskman <command> [options]\n";
+        std::cout << "\n";
+        std::cout << "Commands:\n";
+        std::cout << "  add <task>        Add a new task\n";
+        std::cout << "  list              List all tasks\n";
+        std::cout << "  list --clear      Clear all tasks\n";
+        std::cout << "  list --path       List storage path\n";
+        std::cout << "\n";
+        std::cout << "Options:\n";
+        std::cout << "  --help            Show this help message\n";
+        std::cout << "  --version         Show version number\n";
+    }
+
 }
 else{
     std::cout << "usage: taskman <command>\n";
