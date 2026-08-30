@@ -69,6 +69,9 @@ if (argc > 1){
 
      }
     }
+    else if (arg1 == "list --path"){
+        std::cout << storage_path << "\n";
+    }
     else if (arg1 == "--help"){
         std::cout << "taskman " << version << " " << status << "\n";
         std::cout << "\n";
@@ -80,6 +83,7 @@ if (argc > 1){
         std::cout << "  add <task>        Add a new task\n";
         std::cout << "  list              List all tasks\n";
         std::cout << "  list --clear      Clear all tasks\n";
+        std::cout << "  list --path       List storage path\n";
         std::cout << "\n";
         std::cout << "Options:\n";
         std::cout << "  --help            Show this help message\n";
