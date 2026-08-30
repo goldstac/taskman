@@ -22,7 +22,8 @@ void create_file(const std::string& filepath) {
     std::ofstream file(filepath);
 }
 int main(int argc,char ** argv){
-std::string version = "V0.0.1 Alpha";
+std::string version = "V0.0.1";
+std::string status = "Alpha";
 if (!fs::exists(storage_path)){
    std::cout << "taskman : " << storage_path << " not found\n";
    fs::create_directories(storage_dir);
@@ -69,6 +70,19 @@ if (argc > 1){
      }
     }
     else if (arg1 == "--help"){
+        std::cout << "Taskman " << version << " " << status << "\n";
+        std::cout << "\n";
+        std::cout << "Usage : Taskman <command> [option]\n";
+        std::cout << "\n";
+        std::cout << "Commands\n";
+        std::cout << "\n";
+        std::cout << "   add <task>        Add a new task\n";
+        std::cout << "   list              List task's\n";
+        std::cout << "   list --clear      Clear list storage file and resets task's\n";
+        std::cout <<" Options:\n";
+        std::cout << "\n";
+        std::cout << "   --version       List Version\n";
+        std::cout << "   --help          list this help message\n";
 
     }
 
