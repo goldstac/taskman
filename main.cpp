@@ -70,20 +70,20 @@ if (argc > 1){
      }
     }
     else if (arg1 == "--help"){
-        std::cout << "Taskman " << version << " " << status << "\n";
+        std::cout << "taskman " << version << " " << status << "\n";
         std::cout << "\n";
-        std::cout << "Usage : Taskman <command> [option]\n";
+        std::cout << "A minimal command-line task manager.\n";
         std::cout << "\n";
-        std::cout << "Commands\n";
+        std::cout << "Usage: taskman <command> [options]\n";
         std::cout << "\n";
-        std::cout << "   add <task>        Add a new task\n";
-        std::cout << "   list              List task's\n";
-        std::cout << "   list --clear      Clear list storage file and resets task's\n";
-        std::cout <<" Options:\n";
+        std::cout << "Commands:\n";
+        std::cout << "  add <task>        Add a new task\n";
+        std::cout << "  list              List all tasks\n";
+        std::cout << "  list --clear      Clear all tasks\n";
         std::cout << "\n";
-        std::cout << "   --version       List Version\n";
-        std::cout << "   --help          list this help message\n";
-
+        std::cout << "Options:\n";
+        std::cout << "  --help            Show this help message\n";
+        std::cout << "  --version         Show version number\n";
     }
 
 }
